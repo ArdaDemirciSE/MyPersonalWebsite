@@ -291,10 +291,13 @@ app.get('/documents/:file', (req, res) => {
     });
 });
 
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'public'));
+
 app.get('/', (req, res) => {
     res.render('index', {
-        GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID,
-        GOOGLE_TAG_MANAGER_ID: process.env.GOOGLE_TAG_MANAGER_ID
+        GOOGLE_TAG_MANAGER_ID: process.env.GOOGLE_TAG_MANAGER_ID,
+        GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID
     });
 });
 
