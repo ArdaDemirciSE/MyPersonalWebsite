@@ -343,7 +343,7 @@
 	    languageTitle: "Dil Seçimi",
 	    themeToggleText: "Karanlık Moda Geç",
 	    lightModeText: "Karanlık Moda Geç",
-	    darkModeText: "Açık Moda Geç",
+	    darkModeText: "Aydınlık Moda Geç",
 	    downloadCV: "CV'mi İndir",
 	    sendButton: "Mesaj Gönder",
 	    sending: "Gönderiliyor...",
@@ -355,7 +355,10 @@
 	      emailInvalid: "Geçerli bir e-posta adresi giriniz",
 	      subjectRequired: "Konu alanı zorunludur",
 	      messageRequired: "Mesaj alanı zorunludur"
-	    }
+	    },
+	    lightModeEmoji: "🌓",
+	    darkModeEmoji: "🌞",
+	    pageTitle: "Arda Demirci | Yazılım Mühendisi & Backend Developer"
 	  },
 	  en: {
 	    position: "SOFTWARE ENGINEER",
@@ -423,42 +426,75 @@
 	      emailInvalid: "Please enter a valid email address",
 	      subjectRequired: "Subject field is required",
 	      messageRequired: "Message field is required"
-	    }
+	    },
+	    lightModeEmoji: "🌓",
+	    darkModeEmoji: "🌞",
+	    pageTitle: "Arda Demirci | Software Engineer & Backend Developer"
 	  }
 	};
 
-	function updateThemeText(isDark) {
-	    const lang = localStorage.getItem('language') || 'tr';
-	    const themeText = document.querySelector('.theme-text');
-	    if (isDark) {
-	        themeText.textContent = translations[lang]['darkModeText'];
+	let isDarkMode = localStorage.getItem('theme') === 'dark';
+	let currentLanguage = localStorage.getItem('language') || 'tr';
+
+	function updateThemeState() {
+	    const body = document.body;
+	    const themeToggle = document.getElementById('theme-toggle');
+	    const themeIcon = themeToggle.querySelector('.theme-icon');
+	    const themeText = themeToggle.querySelector('.theme-text');
+	    
+	    if (isDarkMode) {
+	        body.classList.add('dark-mode');
+	        themeIcon.textContent = translations[currentLanguage].darkModeEmoji;
+	        themeText.textContent = translations[currentLanguage].darkModeText;
 	    } else {
-	        themeText.textContent = translations[lang]['lightModeText'];
+	        body.classList.remove('dark-mode');
+	        themeIcon.textContent = translations[currentLanguage].lightModeEmoji;
+	        themeText.textContent = translations[currentLanguage].lightModeText;
 	    }
+	    
+	    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
 	}
 
-	function setTheme(isDark) {
-	    document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
-	    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-	    updateThemeText(isDark);
+	function changeLanguage(lang) {
+	    currentLanguage = lang;
+	    localStorage.setItem('language', lang);
+	    
+	    // Title'ı güncelle
+	    document.title = translations[lang].pageTitle;
+	    
+	    updateContent();
+	    updateThemeState();
 	}
 
-	$(document).ready(function() {
-		let isOpen = true;
-		
-		$('.education-header').on('click', function() {
-			isOpen = !isOpen;
-			const content = $('#lisansContent');
-			const icon = $('.toggle-icon');
-			
-			if (!isOpen) {
-				content.hide();
-				icon.text('+');
-			} else {
-				content.show();
-				icon.text('−');
-			}
-		});
+	function updateContent() {
+	    document.querySelectorAll('[data-translate]').forEach(element => {
+	        const key = element.getAttribute('data-translate');
+	        if (translations[currentLanguage][key]) {
+	            element.textContent = translations[currentLanguage][key];
+	        }
+	    });
+	}
+
+	document.addEventListener('DOMContentLoaded', function() {
+	    const savedTheme = localStorage.getItem('theme');
+	    const savedLanguage = localStorage.getItem('language');
+	    
+	    currentLanguage = savedLanguage || 'tr';
+	    isDarkMode = savedTheme === 'dark';
+	    
+	    updateThemeState();
+	    updateContent();
+	    
+	    document.getElementById('theme-toggle').addEventListener('click', function() {
+	        isDarkMode = !isDarkMode;
+	        updateThemeState();
+	    });
+	    
+	    document.querySelectorAll('.lang-btn').forEach(button => {
+	        button.addEventListener('click', function() {
+	            changeLanguage(this.getAttribute('data-lang'));
+	        });
+	    });
 	});
 
 	function updateCVLanguage(lang) {

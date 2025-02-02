@@ -1,24 +1,26 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="tr" data-theme="light">
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Arda Demirci</title>
+	<title>Arda Demirci | Yazılım Mühendisi & Backend Developer</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="" />
-	<meta name="keywords" content="" />
-	<meta name="author" content="" />
+	<meta name="description" content="Arda Demirci - ASP.NET Core, Node.js ve mikroservis mimarisi uzmanı. Backend Developer , Yazılım Mühendisi olarak web uygulamaları geliştiriyorum. Docker, PostgreSQL, MongoDB ve RabbitMQ teknolojilerinde deneyimli." />
+	<meta name="keywords" content="Arda Demirci, Yazılım Mühendisi, Backend Developer, ASP.NET Core, Node.js, Mikroservis, Docker, PostgreSQL, MongoDB, RabbitMQ, Redis, İstanbul" />
+	<meta name="author" content="Arda Demirci" />
 
   
-	<meta property="og:title" content=""/>
-	<meta property="og:image" content=""/>
-	<meta property="og:url" content=""/>
-	<meta property="og:site_name" content=""/>
-	<meta property="og:description" content=""/>
+	<meta property="og:title" content="Arda Demirci | Yazılım Mühendisi"/>
+	<meta property="og:description" content="ASP.NET Core ve Node.js teknolojileriyle çalışan Backend Developer , Yazılım Mühendisi"/>
+	<meta property="og:image" content="https://www.ardademirci.com/images/about.jpg"/>
+	<meta property="og:url" content="https://www.ardademirci.com"/>
+	<meta property="og:type" content="website"/>
+	<meta property="og:locale" content="tr_TR"/>
+	<meta property="og:locale:alternate" content="en_GB"/>
 	<meta name="twitter:title" content="" />
 	<meta name="twitter:image" content="" />
 	<meta name="twitter:url" content="" />
-	<meta name="twitter:card" content="" />
+	<meta name="twitter:card" content="summary_large_image" />
 
 	
 	<link rel="shortcut icon" href="images/logo.ico">
@@ -47,14 +49,53 @@
 	
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
 
+	<link rel="canonical" href="https://www.ardademirci.com" />
+	
+	<script type="application/ld+json">
+	{
+	  "@context": "http://schema.org",
+	  "@type": "Person",
+	  "name": "Arda Demirci",
+	  "jobTitle": "Yazılım Mühendisi",
+	  "url": "https://www.ardademirci.com",
+	  "image": "https://www.ardademirci.com/images/about.jpg",
+	  "description": "ASP.NET Core, Node.js ve mikroservis mimarisi uzmanı Full Stack Yazılım Mühendisi",
+	  "sameAs": [
+	    "https://www.linkedin.com/in/ardademircise/",
+	    "https://github.com/ardademircise",
+	    "https://www.instagram.com/ardademircise/"
+	  ]
+	}
+	</script>
+
+	<script>
+	(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','<%= GOOGLE_TAG_MANAGER_ID %>');
+	</script>
+
+	<script async src="https://www.googletagmanager.com/gtag/js?id=<%= GOOGLE_ANALYTICS_ID %>"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	
+	  gtag('config', '<%= GOOGLE_ANALYTICS_ID %>');
+	</script>
+
 	</head>
 	<body>
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=<%= GOOGLE_TAG_MANAGER_ID %>"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	
 	<div id="colorlib-page">
 		<div class="container-wrap">
 		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
 		<aside id="colorlib-aside" role="complementary" class="border js-fullheight">
 			<div class="text-center">
-				<div class="author-img" style="background-image: url(images/about.jpg);"></div>
+				<div class="author-img" style="background-image: url(images/about.jpg);" alt="Arda Demirci Profile Photo"></div>
 				<h1 id="colorlib-logo">
 					<a href="index.html" data-translate="fullName">Arda DEMİRCİ</a>
 				</h1>
@@ -98,23 +139,23 @@
 			</div>
 			
 			<div class="settings-panel">
-				<div class="theme-switch-wrapper">
-					<button class="theme-switch" id="theme-toggle">
-						<span class="theme-icon">🌓</span>
-						<span class="theme-text" data-translate="themeToggleText">Karanlık Moda Geç</span>
+				<div class="theme-container">
+					<button id="theme-toggle" class="theme-toggle-btn">
+						<span class="theme-icon" data-translate="themeIcon">🌓</span>
+						<span class="theme-text" data-translate="themeText">Karanlık Moda Geç</span>
 					</button>
 				</div>
 
 				<div class="language-section">
 					<span class="language-title" data-translate="languageTitle">Dil Seçimi</span>
 					<div class="language-switch">
-						<button type="button" data-lang="tr" class="lang-btn">
+						<button type="button" data-lang="tr" class="lang-btn active">
 							<img src="https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/tr.svg" alt="Türkçe" class="flag-icon">
-							<span class="lang-text">Türkçe</span>
+							<span class="lang-text" data-translate="turkish">Türkçe</span>
 						</button>
 						<button type="button" data-lang="en" class="lang-btn">
 							<img src="https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/gb.svg" alt="English" class="flag-icon">
-							<span class="lang-text">English</span>
+							<span class="lang-text" data-translate="english">English</span>
 						</button>
 					</div>
 				</div>
@@ -523,6 +564,7 @@ document.getElementById("contactForm").addEventListener("submit", async function
 	<script src="js/jquery.flexslider-min.js"></script>
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/jquery.countTo.js"></script>
+	<script src="js/translations.js"></script>
 	<script src="js/main.js"></script>
 
 	</body>

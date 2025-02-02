@@ -291,6 +291,13 @@ app.get('/documents/:file', (req, res) => {
     });
 });
 
+app.get('/', (req, res) => {
+    res.render('index', {
+        GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID,
+        GOOGLE_TAG_MANAGER_ID: process.env.GOOGLE_TAG_MANAGER_ID
+    });
+});
+
 app.use((req, res) => {
   res.status(404).json({ error: 'Sayfa bulunamadı' });
 });
